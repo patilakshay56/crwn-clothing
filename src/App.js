@@ -1,12 +1,20 @@
 import React from 'react';
 import './App.css';
 import HomePage from './pages/homepage/homepage';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <HomePage></HomePage>
-    </div>
+    <Switch>
+      <Route exact path='/' component={HomePage} />
+      <Route
+        path='/hats'
+        render={(props) => {
+          console.log(props.match);
+          return <h1>Hats</h1>;
+        }}
+      />
+    </Switch>
   );
 }
 
