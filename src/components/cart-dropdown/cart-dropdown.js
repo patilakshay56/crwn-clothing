@@ -3,6 +3,7 @@ import CustomButton from '../custom-button/custom-button';
 import './cart-dropdown.scss';
 import CartItem from '../cart-item/cart-item';
 import { connect } from 'react-redux';
+import { selectCartItems } from '../../redux/cart/cart.selector';
 
 const cartDropdown = ({ cartItems }) => {
   console.log('cart component dropdown re-rendered !!!!');
@@ -18,8 +19,8 @@ const cartDropdown = ({ cartItems }) => {
   );
 };
 
-const mapDispatchToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+const mapDispatchToProps = (state) => ({
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapDispatchToProps, null)(cartDropdown);
