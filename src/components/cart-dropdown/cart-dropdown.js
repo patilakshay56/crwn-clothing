@@ -4,6 +4,7 @@ import './cart-dropdown.scss';
 import CartItem from '../cart-item/cart-item';
 import { connect } from 'react-redux';
 import { selectCartItems } from '../../redux/cart/cart.selector';
+import { createStructuredSelector } from 'reselect';
 
 const cartDropdown = ({ cartItems }) => {
   console.log('cart component dropdown re-rendered !!!!');
@@ -19,8 +20,8 @@ const cartDropdown = ({ cartItems }) => {
   );
 };
 
-const mapDispatchToProps = (state) => ({
-  cartItems: selectCartItems(state),
+const mapDispatchToProps = createStructuredSelector({
+  cartItems: selectCartItems,
 });
 
 export default connect(mapDispatchToProps, null)(cartDropdown);
